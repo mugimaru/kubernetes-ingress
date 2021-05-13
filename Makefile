@@ -1,5 +1,8 @@
-VERSION = 1.11.1
+GIT_COMMIT_SHORT = $(shell echo ${GIT_COMMIT} | cut -c1-7)
+GIT_TAG = $(shell git describe --tags --abbrev=0)
+VERSION = $(GIT_TAG)-SNAPSHOT-$(GIT_COMMIT_SHORT)
 TAG = $(VERSION)
+
 PREFIX = nginx/nginx-ingress
 GOFLAGS ?= -mod=vendor
 TARGET ?= local
